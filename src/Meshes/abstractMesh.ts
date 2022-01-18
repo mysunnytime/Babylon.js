@@ -429,6 +429,16 @@ export class AbstractMesh extends TransformNode implements IDisposable, ICullabl
     public enablePointerMoveEvents = false;
 
     /**
+     * Gets or sets the accessibility tag to describe the mesh for accessibility purpose.
+     */
+    public accessibilityTag: IAccessibilityTag = {
+        isSalient: false,
+        description: "",
+        isWholeObject: false,
+        isClickable: false
+    };
+
+    /**
      * Specifies the rendering group id for this mesh (0 by default)
      * @see https://doc.babylonjs.com/resources/transparency_and_how_meshes_are_rendered#rendering-groups
      */
@@ -2510,6 +2520,32 @@ export class AbstractMesh extends TransformNode implements IDisposable, ICullabl
     public getConnectedParticleSystems(): IParticleSystem[] {
         return this._scene.particleSystems.filter((particleSystem) => particleSystem.emitter === this);
     }
+}
+
+/**
+ * Define an interface for an abstract mesh to indicate it's info for accessibility.
+ */
+ export interface IAccessibilityTag {
+    /**
+     * A boolean indicating that this mesh is salience to be considered in the accesibility tree. (false by default)
+     */
+    isSalient: boolean;
+    /**
+     * A string as alt text of the mesh, describing what the mesh is, for accessibility purpose.
+     */
+    description: string;
+    /**
+     * A boolean indicating that this mesh and its submeshes are a whole object to be considered in the accessibility tree. (false by default)
+     */
+    isWholeObject: boolean;
+    /**
+     * A boolean indicating that this mesh is clickable or not. (false by default) If it is true, generate a button node instead of a div element in the accessibility tree.
+     */
+    isClickable: boolean;
+    /**
+     * If isClickable is true, a button element will be generated for the mesh in the accessibility tree and onClicked function will be invoked when the user click on the button.
+     */
+    onClicked?: Function;
 }
 
 RegisterClass("BABYLON.AbstractMesh", AbstractMesh);
