@@ -473,6 +473,10 @@ export class Inspector {
         }
     }
 
+    public static RenderAccessibiiltyTree(scene: Scene) {
+        AccessibilityRenderer.RenderAccessibilityTree(scene);
+    }
+
     public static _SetNewScene(scene: Scene) {
         this._Scene = scene;
         this._GlobalState.onNewSceneObservable.notifyObservers(scene);
