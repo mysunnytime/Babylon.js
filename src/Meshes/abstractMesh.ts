@@ -2531,6 +2531,10 @@ export class AbstractMesh extends TransformNode implements IDisposable, ICullabl
      */
     isSalient: boolean;
     /**
+     * If the mesh is salient, we create a html twin of it. This stores the mesh's corresponding html element.
+     */
+    // element?: HTMLElement;
+    /**
      * A string as alt text of the mesh, describing what the mesh is, for accessibility purpose.
      */
     description: string;
