@@ -1,11 +1,11 @@
 import type { Scene } from "@dev/core";
 import { Engine } from "@dev/core"; // can also be @lts/core
-import { createScene as createSceneTS } from "./createScene";
-import { createScene as createSceneJS } from "./createSceneJS.js";
+// import { createScene as createSceneTS } from "./createScene";
+// import { createScene as createSceneJS } from "./createSceneJS.js";
+import { createScene } from "./index.5.js";
 
-const useJavascript = false;
-
-const createScene = useJavascript ? createSceneJS : createSceneTS;
+// const useJavascript = false;
+// const createScene = useJavascript ? createSceneJS : createSceneTS;
 
 export const canvas = document.getElementById("babylon-canvas"); // Get the canvas element
 export const engine = new Engine(canvas, true); // Generate the BABYLON 3D engine
